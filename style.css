@@ -42,15 +42,17 @@ cursor: pointer;
 }
 
 .books {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    width: 1000px;
-    height: auto;
-    box-sizing: border-box;
-    margin: auto;
-    margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 50px auto 0;
+  box-sizing: border-box;
+  justify-items: center;
 }
+
 
 .book {
     background-color: rgb(255, 255, 255);
@@ -62,4 +64,98 @@ cursor: pointer;
     width: 150px;
     font-size: 14px;
     box-shadow: 1px 3px 5px 1px hsl(0, 0%, 69%);
+    position: relative;
+}
+
+.book-title {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.book-author,
+.book-page {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.deleteBook {
+    background-image: url(./media/trash-can-outline.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    background-color: #ffffff;
+    border: none;
+    opacity: 0.5;
+    cursor: pointer; 
+    transition: opacity 0.2s ease;
+}
+
+.delete-wrapper {
+  display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 120%; /* position above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.75rem;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.delete-wrapper:hover .tooltip {
+    visibility: visible;
+    opacity: 0.8;
+}
+
+#popupForm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+#popupForm input {
+  display: block;
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 8px;
+}
+.close-form {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-form:hover {
+  color: #333;
 }
