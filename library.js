@@ -1,8 +1,15 @@
+// function Book(title, author, page) {
+//     this.title = title;
+//     this.author = author;
+//     this.page = page;
+// }
 
-function Book(title, author, page) {
-    this.title = title;
-    this.author = author;
-    this.page = page;
+class Book {
+    constructor (title, author, page) {
+        this.title = title;
+        this.author = author;
+        this.page = page;
+    }
 }
 
 function displayBook() {
@@ -49,6 +56,18 @@ myLibrary.forEach((book, index) => {
 })
 }
 
+function validateForm(form) {
+    const inputArray = form.getElementsByTagName("input");
+    for (let i = 0; i < inputArray.length; i++)
+    {
+        if (inputArray[i].value.trim() ==="") {
+            alert(`Please fill the field: ${inputArray[i].name || inputArray[i].id}`);
+            return false;
+        }
+    }
+    return true;
+}
+
 const book1 = new Book('The Happiest Refuge', 'Anh Do', 350);
 const book2 = new Book('Digital Fortress', 'Dan Brown', 283);
 const book3 = new Book('Percy Jackson', 'Rick Riodan', 500);
@@ -64,6 +83,10 @@ addBookButton.addEventListener('click',()=> {
     });
 bookForm.addEventListener('submit', (e) =>{
         e.preventDefault();
+        const isValid = validateForm(document.getElementById("bookForm"));
+        if(!isValid) {
+            return;
+        }
         const title = document.getElementById('title').value;
         const author = document.getElementById('author').value;
         const page = document.getElementById('page').value;
